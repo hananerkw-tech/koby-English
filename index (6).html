@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>koby English | تعلّم الإنجليزية بثقة وتميز</title>
+<meta name="description" content="koby English — منصة تعليم اللغة الإنجليزية الفاخرة. دورات احترافية، مدربون معتمدون، ونتائج حقيقية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================= */
+/* koby English — Design Tokens  */
+/* ============================= */
+:root{
+  --navy-deep:   #060e26;
+  --navy:        #0A1A3F;
+  --navy-soft:   #122451;
+  --silver:      #C0C0C0;
+  --silver-light:#E9E9EF;
+  --silver-dim:  #8b93a8;
+  --white:       #FFFFFF;
+  --gold:        #D9B36A;
+  --gold-soft:   #f0dba9;
+  --glass:       rgba(255,255,255,0.045);
+  --glass-brd:   rgba(192,192,192,0.22);
+  --shadow-navy: rgba(4,9,24,0.55);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --ff-display:'Playfair Display', serif;
+  --ff-body:'Tajawal', sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--ff-body);
+  background:var(--navy-deep);
+  color:var(--silver-light);
+  overflow-x:hidden;
+  line-height:1.7;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+.container{
+  width:100%;
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 28px;
+}
+::selection{background:var(--gold-soft);color:var(--navy-deep);}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+}
+
+/* ============================= */
+/* Ambient starfield / meteors    */
+/* ============================= */
+#sky{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 25% 15%, rgba(217,179,106,0.06), transparent 45%),
+    radial-gradient(ellipse at 80% 70%, rgba(192,192,192,0.05), transparent 50%),
+    linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-deep) 100%);
+}
+.star{
+  position:absolute;
+  border-radius:50%;
+  background:var(--silver-light);
+  opacity:.7;
+  animation:twinkle linear infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:.15; transform:scale(1);}
+  50%{opacity:.95; transform:scale(1.4);}
+}
+.meteor{
+  position:absolute;
+  width:2px;height:2px;
+  background:linear-gradient(90deg, var(--gold-soft), rgba(255,255,255,0));
+  border-radius:2px;
+  filter:drop-shadow(0 0 6px var(--gold-soft));
+  opacity:0;
+}
+@keyframes shoot{
+  0%{ transform: translate(0,0) rotate(215deg); opacity:0; }
+  8%{ opacity:1; }
+  75%{ opacity:.7; }
+  100%{ transform: translate(-620px,430px) rotate(215deg); opacity:0; }
+}
+
+/* ============================= */
+/* Header                        */
+/* ============================= */
+header{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  padding:18px 0;
+  transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+}
+header.scrolled{
+  background:rgba(6,14,38,0.82);
+  backdrop-filter:blur(14px) saturate(140%);
+  padding:11px 0;
+  box-shadow:0 10px 30px var(--shadow-navy);
+  border-bottom:1px solid rgba(192,192,192,0.12);
+}
+.nav-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand-mark{width:42px;height:42px;flex-shrink:0;}
+.brand-name{
+  font-family:var(--ff-display);
+  font-size:1.5rem;
+  letter-spacing:.3px;
+  color:var(--white);
+  direction:ltr;
+  display:flex;
+  align-items:baseline;
+  gap:5px;
+}
+.brand-name b{
+  font-weight:700;
+  background:linear-gradient(180deg, var(--silver-light), var(--silver));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+}
+.nav-links a{
+  font-size:.98rem;
+  color:var(--silver-light);
+  position:relative;
+  padding:6px 0;
+  transition:color .25s ease;
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  right:0; bottom:0;
+  width:0%; height:1px;
+  background:var(--gold-soft);
+  transition:width .3s ease;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  display:flex;align-items:center;gap:14px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 26px;
+  border-radius:999px;
+  font-size:.95rem;
+  font-weight:700;
+  transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+  white-space:nowrap;
+}
+.btn-gold{
+  background:linear-gradient(135deg, var(--gold-soft), var(--gold) 60%, #b8903f);
+  color:var(--navy-deep);
+  box-shadow:0 8px 24px rgba(217,179,106,0.28);
+}
+.btn-gold:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(217,179,106,0.4);}
+.btn-ghost{
+  background:transparent;
+  border:1px solid var(--glass-brd);
+  color:var(--silver-light);
+}
+.btn-ghost:hover{
+  border-color:var(--silver);
+  background:rgba(192,192,192,0.06);
+  transform:translateY(-2px);
+}
+.menu-toggle{
+  display:none;
+  width:40px;height:40px;
+  border:1px solid var(--glass-brd);
+  border-radius:10px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:5px;
+}
+.menu-toggle span{width:18px;height:2px;background:var(--silver-light);border-radius:2px;}
+
+/* ============================= */
+/* Hero                          */
+/* ============================= */
+.hero{
+  position:relative;
+  z-index:1;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:150px 0 90px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:40px;
+  align-items:center;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 18px;
+  border-radius:999px;
+  background:var(--glass);
+  border:1px solid var(--glass-brd);
+  font-size:.82rem;
+  color:var(--gold-soft);
+  letter-spacing:.4px;
+  margin-bottom:26px;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-soft);box-shadow:0 0 8px var(--gold-soft);}
+.hero h1{
+  font-family:var(--ff-display);
+  font-weight:700;
+  font-size:clamp(2.3rem, 4.6vw, 3.6rem);
+  line-height:1.28;
+  color:var(--white);
+  margin-bottom:22px;
+}
+.hero h1 .accent{
+  background:linear-gradient(120deg, var(--silver-light), var(--gold-soft) 55%, var(--silver));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero p.lead{
+  font-size:1.08rem;
+  color:var(--silver-dim);
+  max-width:520px;
+  margin-bottom:34px;
+}
+.hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:46px;}
+.hero-stats{
+  display:flex;
+  gap:34px;
+  flex-wrap:wrap;
+}
+.hero-stat b{
+  display:block;
+  font-family:var(--ff-display);
+  font-size:1.7rem;
+  color:var(--white);
+}
+.hero-stat span{font-size:.85rem; color:var(--silver-dim);}
+
+/* --- 3D Book --- */
+.book-stage{
+  position:relative;
+  height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.book-glow{
+  position:absolute;
+  width:320px;height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(217,179,106,0.32), rgba(192,192,192,0.08) 55%, transparent 72%);
+  filter:blur(14px);
+  animation:pulse-glow 4.5s ease-in-out infinite;
+}
+@keyframes pulse-glow{
+  0%,100%{opacity:.55; transform:scale(1);}
+  50%{opacity:.9; transform:scale(1.12);}
+}
+.book-perspective{
+  perspective:1600px;
+  position:relative;
+  z-index:2;
+}
+.book{
+  position:relative;
+  width:230px;
+  height:310px;
+  transform-style:preserve-3d;
+  transform:rotateX(8deg) rotateY(-18deg);
+  animation:book-sway 7s ease-in-out infinite;
+}
+@keyframes book-sway{
+  0%,100%{transform:rotateX(8deg) rotateY(-18deg);}
+  50%{transform:rotateX(6deg) rotateY(-11deg);}
+}
+.book-spine{
+  position:absolute;
+  right:0; top:0; bottom:0;
+  width:16px;
+  background:linear-gradient(90deg, #071231, var(--navy));
+  transform:rotateY(90deg) translateZ(-8px) translateX(8px);
+  border-radius:2px;
+}
+.book-back{
+  position:absolute; inset:0;
+  border-radius:4px 10px 10px 4px;
+  background:linear-gradient(135deg, var(--navy-soft), var(--navy-deep));
+  border:1px solid rgba(192,192,192,0.18);
+  transform:translateZ(-6px);
+}
+.book-cover{
+  position:absolute; inset:0;
+  border-radius:4px 10px 10px 4px;
+  background:
+    linear-gradient(160deg, rgba(192,192,192,0.06), transparent 40%),
+    linear-gradient(135deg, #0d1f4a, var(--navy) 55%, #081436);
+  border:1px solid rgba(192,192,192,0.28);
+  box-shadow:0 30px 60px rgba(3,7,20,0.65), inset 0 0 40px rgba(192,192,192,0.05);
+  transform-origin:right center;
+  transform-style:preserve-3d;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  padding:20px;
+  animation:cover-open 7s ease-in-out infinite;
+}
+@keyframes cover-open{
+  0%, 8%{transform:rotateY(0deg);}
+  38%, 62%{transform:rotateY(-152deg);}
+  92%,100%{transform:rotateY(0deg);}
+}
+.cover-frame{
+  position:absolute; inset:14px;
+  border:1px solid rgba(217,179,106,0.4);
+  border-radius:2px 8px 8px 2px;
+}
+.cover-icon{width:46px;height:46px;opacity:.9;}
+.cover-title{
+  font-family:var(--ff-display);
+  font-style:italic;
+  font-weight:600;
+  font-size:1.32rem;
+  text-align:center;
+  color:var(--gold-soft);
+  text-shadow:0 0 18px rgba(217,179,106,0.55);
+  line-height:1.35;
+}
+.page{
+  position:absolute; inset:6px 0 6px 6px;
+  border-radius:2px 8px 8px 2px;
+  background:linear-gradient(120deg, #f4f1e8, #e7e2d3);
+  transform-origin:right center;
+  transform-style:preserve-3d;
+  box-shadow:0 2px 10px rgba(0,0,0,0.25);
+}
+.page::before{
+  content:"";
+  position:absolute; inset:14px;
+  background-image:repeating-linear-gradient(180deg, rgba(10,26,63,0.14) 0 2px, transparent 2px 13px);
+  opacity:.55;
+}
+.page-1{animation:flip1 7s ease-in-out infinite;}
+.page-2{animation:flip2 7s ease-in-out infinite;}
+.page-3{animation:flip3 7s ease-in-out infinite;}
+@keyframes flip1{
+  0%,40%{transform:rotateY(0deg);}
+  50%{transform:rotateY(-120deg);}
+  90%,100%{transform:rotateY(0deg);}
+}
+@keyframes flip2{
+  0%,45%{transform:rotateY(0deg);}
+  55%{transform:rotateY(-110deg);}
+  88%,100%{transform:rotateY(0deg);}
+}
+@keyframes flip3{
+  0%,50%{transform:rotateY(0deg);}
+  60%{transform:rotateY(-100deg);}
+  86%,100%{transform:rotateY(0deg);}
+}
+.book-shadow{
+  position:absolute;
+  bottom:-6px;
+  width:230px;height:26px;
+  border-radius:50%;
+  background:radial-gradient(ellipse, rgba(0,0,0,0.5), transparent 70%);
+  filter:blur(4px);
+  z-index:0;
+}
+
+/* ============================= */
+/* Section shell                 */
+/* ============================= */
+section{position:relative; z-index:1; padding:110px 0;}
+.section-head{
+  text-align:center;
+  max-width:640px;
+  margin:0 auto 60px;
+}
+.section-head .eyebrow{margin-bottom:18px;}
+.section-head h2{
+  font-family:var(--ff-display);
+  font-weight:700;
+  font-size:clamp(1.8rem, 3.2vw, 2.5rem);
+  color:var(--white);
+  margin-bottom:14px;
+}
+.section-head p{color:var(--silver-dim); font-size:1.02rem;}
+
+/* ============================= */
+/* Crystalline icon               */
+/* ============================= */
+.crystal-icon{
+  width:64px;height:64px;
+  border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(155deg, rgba(192,192,192,0.14), rgba(192,192,192,0.02));
+  border:1px solid var(--glass-brd);
+  position:relative;
+  transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+}
+.crystal-icon::after{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:18px;
+  background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.55) 48%, transparent 62%);
+  background-size:220% 220%;
+  background-position:-120% -120%;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+.crystal-icon svg{
+  width:30px;height:30px;
+  stroke:url(#silverGrad);
+  fill:none;
+  position:relative;
+  z-index:1;
+  filter:drop-shadow(0 0 0 rgba(192,192,192,0));
+  transition:filter .4s ease;
+}
+.icon-card:hover .crystal-icon{
+  transform:translateY(-4px) scale(1.05);
+  border-color:rgba(217,179,106,0.55);
+  box-shadow:0 14px 30px rgba(192,192,192,0.12), 0 0 24px rgba(217,179,106,0.18);
+}
+.icon-card:hover .crystal-icon::after{
+  opacity:1;
+  background-position:120% 120%;
+  transition:opacity .4s ease, background-position 1s ease;
+}
+.icon-card:hover .crystal-icon svg{filter:drop-shadow(0 0 6px rgba(217,179,106,0.65));}
+
+/* ============================= */
+/* Features                      */
+/* ============================= */
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+.icon-card{
+  padding:32px 26px;
+  border-radius:var(--radius-md);
+  background:var(--glass);
+  border:1px solid var(--glass-brd);
+  backdrop-filter:blur(6px);
+  transition:transform .35s ease, border-color .35s ease, background .35s ease;
+}
+.icon-card:hover{transform:translateY(-6px); border-color:rgba(192,192,192,0.4); background:rgba(255,255,255,0.06);}
+.icon-card h3{
+  font-family:var(--ff-display);
+  font-size:1.18rem;
+  color:var(--white);
+  margin:20px 0 10px;
+}
+.icon-card p{color:var(--silver-dim); font-size:.94rem;}
+
+/* ============================= */
+/* Courses                       */
+/* ============================= */
+.courses-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+.course-card{
+  position:relative;
+  padding:2px;
+  border-radius:var(--radius-lg);
+  background:linear-gradient(160deg, rgba(192,192,192,0.35), rgba(192,192,192,0.02));
+  transition:transform .35s ease;
+}
+.course-card:hover{transform:translateY(-6px);}
+.course-inner{
+  border-radius:calc(var(--radius-lg) - 2px);
+  background:linear-gradient(165deg, var(--navy-soft), var(--navy-deep));
+  padding:30px 26px 26px;
+  height:100%;
+}
+.course-level{
+  display:inline-block;
+  font-size:.78rem;
+  padding:5px 14px;
+  border-radius:999px;
+  border:1px solid rgba(217,179,106,0.4);
+  color:var(--gold-soft);
+  margin-bottom:18px;
+}
+.course-inner h3{
+  font-family:var(--ff-display);
+  font-size:1.3rem;
+  color:var(--white);
+  margin-bottom:10px;
+}
+.course-inner p{color:var(--silver-dim); font-size:.93rem; margin-bottom:22px;}
+.course-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:18px;
+  border-top:1px solid rgba(192,192,192,0.14);
+  font-size:.85rem;
+  color:var(--silver-dim);
+}
+.course-meta a{color:var(--gold-soft); font-weight:700; display:flex; align-items:center; gap:6px;}
+.course-meta a svg{width:14px;height:14px;}
+
+/* ============================= */
+/* Stats band                    */
+/* ============================= */
+.stats-band{
+  padding:64px 0;
+  border-top:1px solid rgba(192,192,192,0.12);
+  border-bottom:1px solid rgba(192,192,192,0.12);
+  background:linear-gradient(90deg, rgba(192,192,192,0.03), rgba(217,179,106,0.03));
+}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  text-align:center;
+  gap:20px;
+}
+.stat b{
+  display:block;
+  font-family:var(--ff-display);
+  font-size:2.4rem;
+  color:var(--white);
+  background:linear-gradient(180deg, var(--silver-light), var(--gold-soft));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.stat span{color:var(--silver-dim); font-size:.9rem;}
+
+/* ============================= */
+/* Testimonials                  */
+/* ============================= */
+.testi-track{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.testi-card{
+  padding:30px 26px;
+  border-radius:var(--radius-md);
+  background:var(--glass);
+  border:1px solid var(--glass-brd);
+}
+.testi-quote{color:var(--silver-light); font-size:.98rem; margin-bottom:22px;}
+.testi-quote::before{content:"“"; color:var(--gold-soft); font-size:1.4rem;}
+.testi-person{display:flex; align-items:center; gap:12px;}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg, var(--silver), var(--navy));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-display); color:var(--white); font-weight:700;
+  flex-shrink:0;
+}
+.testi-person b{display:block; color:var(--white); font-size:.92rem;}
+.testi-person span{color:var(--silver-dim); font-size:.8rem;}
+
+/* ============================= */
+/* CTA banner                    */
+/* ============================= */
+.cta-banner{
+  position:relative;
+  border-radius:28px;
+  overflow:hidden;
+  padding:70px 40px;
+  text-align:center;
+  background:linear-gradient(150deg, var(--navy-soft), var(--navy-deep));
+  border:1px solid var(--glass-brd);
+}
+.cta-banner::before{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at 30% 20%, rgba(217,179,106,0.18), transparent 55%),
+             radial-gradient(circle at 75% 80%, rgba(192,192,192,0.12), transparent 55%);
+}
+.cta-banner > *{position:relative; z-index:1;}
+.cta-banner h2{
+  font-family:var(--ff-display);
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  color:var(--white);
+  margin-bottom:16px;
+}
+.cta-banner p{color:var(--silver-dim); max-width:480px; margin:0 auto 32px;}
+.cta-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+
+/* ============================= */
+/* Footer                        */
+/* ============================= */
+footer{
+  position:relative; z-index:1;
+  padding:70px 0 26px;
+  border-top:1px solid rgba(192,192,192,0.14);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:40px;
+  margin-bottom:50px;
+}
+.footer-about p{color:var(--silver-dim); font-size:.9rem; margin-top:16px; max-width:280px;}
+.footer-col h4{color:var(--white); font-size:.98rem; margin-bottom:18px; font-family:var(--ff-display);}
+.footer-col ul li{margin-bottom:11px;}
+.footer-col ul a{color:var(--silver-dim); font-size:.9rem; transition:color .25s ease;}
+.footer-col ul a:hover{color:var(--gold-soft);}
+.footer-social{display:flex; gap:12px; margin-top:18px;}
+.footer-social a{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--glass-brd);
+  transition:border-color .3s ease, transform .3s ease;
+}
+.footer-social a:hover{border-color:var(--gold-soft); transform:translateY(-3px);}
+.footer-social svg{width:16px;height:16px; stroke:var(--silver-light);}
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:26px; border-top:1px solid rgba(192,192,192,0.1);
+  color:var(--silver-dim); font-size:.85rem; flex-wrap:wrap; gap:12px;
+}
+
+/* ============================= */
+/* Reveal-on-scroll               */
+/* ============================= */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ============================= */
+/* Responsive                    */
+/* ============================= */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr; text-align:center;}
+  .hero p.lead{margin-inline:auto;}
+  .hero-actions, .hero-stats{justify-content:center;}
+  .book-stage{height:420px;}
+  .features-grid, .courses-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .testi-track{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr); row-gap:34px;}
+}
+@media (max-width:720px){
+  .nav-links{
+    position:fixed; inset:74px 16px auto 16px;
+    background:rgba(6,14,38,0.97);
+    border:1px solid var(--glass-brd);
+    border-radius:16px;
+    flex-direction:column;
+    padding:24px;
+    gap:20px;
+    transform:translateY(-14px);
+    opacity:0; pointer-events:none;
+    transition:all .3s ease;
+  }
+  .nav-links.open{transform:translateY(0); opacity:1; pointer-events:auto;}
+  .menu-toggle{display:flex;}
+  .nav-cta .btn-ghost{display:none;}
+  .features-grid, .courses-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="silverGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F2F2F5"/>
+      <stop offset="100%" stop-color="#9AA0AE"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div id="sky"></div>
+
+<!-- ===================== Header ===================== -->
+<header id="siteHeader">
+  <div class="container nav-wrap">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none">
+        <path d="M6 10c6-3 12-3 18 0v26c-6-3-12-3-18 0V10Z" fill="url(#silverGrad)" opacity="0.92"/>
+        <path d="M42 10c-6-3-12-3-18 0v26c6-3 12-3 18 0V10Z" fill="#0A1A3F" stroke="url(#silverGrad)" stroke-width="1"/>
+        <path d="M30 8c6-4 12-2 14 3-2 4-8 5-14 3-1-2-1-4 0-6Z" fill="url(#silverGrad)" stroke="#0A1A3F" stroke-width="0.6"/>
+      </svg>
+      <span class="brand-name">koby <b>English</b></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#top">الرئيسية</a>
+      <a href="#features">لماذا نحن</a>
+      <a href="#courses">الدورات</a>
+      <a href="#testimonials">آراء الطلاب</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">تسجيل الدخول</a>
+      <a href="#courses" class="btn btn-gold">ابدأ الآن مجانًا</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== Hero ===================== -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal in">
+      <div class="eyebrow"><span class="dot"></span> منصة تعليم إنجليزية فاخرة</div>
+      <h1>ارتقِ بلغتك الإنجليزية إلى مستوى <span class="accent">الثقة والتميز</span></h1>
+      <p class="lead">دورات مصممة بعناية، مدربون معتمدون من أفضل الجامعات، ومسار تعلّم يوصلك من الأساسيات إلى الطلاقة الحقيقية — بأسلوب راقٍ يليق بطموحك.</p>
+      <div class="hero-actions">
+        <a href="#courses" class="btn btn-gold">استكشف الدورات</a>
+        <a href="#features" class="btn btn-ghost">تعرّف على المنهج</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>+42,000</b><span>طالب وطالبة</span></div>
+        <div class="hero-stat"><b>96%</b><span>نسبة الرضا</span></div>
+        <div class="hero-stat"><b>+120</b><span>مدرب معتمد</span></div>
+      </div>
+    </div>
+
+    <div class="book-stage reveal in">
+      <div class="book-glow"></div>
+      <div class="book-perspective">
+        <div class="book">
+          <div class="book-spine"></div>
+          <div class="book-back"></div>
+          <div class="page page-3"></div>
+          <div class="page page-2"></div>
+          <div class="page page-1"></div>
+          <div class="book-cover">
+            <div class="cover-frame"></div>
+            <svg class="cover-icon" viewBox="0 0 48 48" fill="none">
+              <path d="M6 10c6-3 12-3 18 0v26c-6-3-12-3-18 0V10Z" fill="url(#silverGrad)" opacity="0.9"/>
+              <path d="M42 10c-6-3-12-3-18 0v26c6-3 12-3 18 0V10Z" fill="none" stroke="url(#silverGrad)" stroke-width="1.2"/>
+            </svg>
+            <div class="cover-title">learn with<br>koby</div>
+          </div>
+        </div>
+      </div>
+      <div class="book-shadow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Features ===================== -->
+<section id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span> لماذا koby English</div>
+      <h2>تجربة تعليمية لا تُنسى</h2>
+      <p>كل تفصيل في المنصة صُمم ليمنحك تقدمًا ملموسًا وثقة حقيقية في التحدث.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="icon-card reveal">
+        <div class="crystal-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c4-2 8-2 12 0v13c-4-2-8-2-12 0V6Z"/><path d="M20 6c-4-2-8-2-12 0v13c4-2 8-2 12 0V6Z"/></svg>
+        </div>
+        <h3>منهج مبني بعناية</h3>
+        <p>مسار تدريجي من المستوى الأول حتى الطلاقة الكاملة، مبني على أحدث معايير تعليم اللغات.</p>
+      </div>
+
+      <div class="icon-card reveal">
+        <div class="crystal-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 1 1-3.2-6.4"/><path d="M21 4v5h-5"/></svg>
+        </div>
+        <h3>محادثة حية يومية</h3>
+        <p>جلسات محادثة مباشرة مع مدربين ناطقين بالإنجليزية لصقل نطقك وثقتك.</p>
+      </div>
+
+      <div class="icon-card reveal">
+        <div class="crystal-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 8v8l9 5 9-5V8"/></svg>
+        </div>
+        <h3>شهادات معتمدة</h3>
+        <p>احصل على شهادة إتمام معتمدة بعد كل مستوى، تعزز سيرتك الذاتية المهنية.</p>
+      </div>
+
+      <div class="icon-card reveal">
+        <div class="crystal-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>تعلّم في وقتك</h3>
+        <p>دروس مسجّلة عالية الجودة متاحة على مدار الساعة، تناسب جدولك الخاص.</p>
+      </div>
+
+      <div class="icon-card reveal">
+        <div class="crystal-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>مدربون نخبة</h3>
+        <p>فريق من المدربين المعتمدين دوليًا، بخبرة عملية في تدريس المتحدثين بالعربية.</p>
+      </div>
+
+      <div class="icon-card reveal">
+        <div class="crystal-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+        </div>
+        <h3>متابعة تقدمك</h3>
+        <p>تقارير أداء أسبوعية تُظهر تطورك بدقة، وتحدد نقاط التركيز القادمة.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Courses ===================== -->
+<section id="courses">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span> الدورات</div>
+      <h2>اختر المسار الذي يناسب طموحك</h2>
+      <p>من الأساسيات إلى إتقان لغة الأعمال، لكل مرحلة برنامجها الخاص.</p>
+    </div>
+    <div class="courses-grid">
+
+      <div class="course-card reveal">
+        <div class="course-inner">
+          <span class="course-level">مبتدئ</span>
+          <h3>أساسيات اللغة الإنجليزية</h3>
+          <p>ابدأ رحلتك من الصفر: الحروف، القواعد الأساسية، وأول محادثاتك الحقيقية.</p>
+          <div class="course-meta">
+            <span>8 أسابيع</span>
+            <a href="#contact">التفاصيل
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M14 5l-7 7 7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card reveal">
+        <div class="course-inner">
+          <span class="course-level">متوسط</span>
+          <h3>الطلاقة في المحادثة</h3>
+          <p>وسّع مفرداتك وتحدث بثقة في المواقف اليومية والاجتماعية المختلفة.</p>
+          <div class="course-meta">
+            <span>10 أسابيع</span>
+            <a href="#contact">التفاصيل
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M14 5l-7 7 7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card reveal">
+        <div class="course-inner">
+          <span class="course-level">متقدم</span>
+          <h3>إنجليزية الأعمال والمقابلات</h3>
+          <p>لغة احترافية للاجتماعات والعروض التقديمية والمقابلات الوظيفية الدولية.</p>
+          <div class="course-meta">
+            <span>6 أسابيع</span>
+            <a href="#contact">التفاصيل
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M14 5l-7 7 7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Stats band ===================== -->
+<div class="stats-band">
+  <div class="container stats-grid">
+    <div class="stat reveal"><b>+42K</b><span>طالب مسجّل</span></div>
+    <div class="stat reveal"><b>+120</b><span>مدرب معتمد</span></div>
+    <div class="stat reveal"><b>+300</b><span>درس تفاعلي</span></div>
+    <div class="stat reveal"><b>96%</b><span>نسبة الرضا</span></div>
+  </div>
+</div>
+
+<!-- ===================== Testimonials ===================== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span> آراء طلابنا</div>
+      <h2>قصص نجاح حقيقية</h2>
+      <p>آلاف الطلاب غيّروا مستقبلهم المهني والدراسي مع koby English.</p>
+    </div>
+    <div class="testi-track">
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">خلال ستة أشهر فقط استطعت اجتياز مقابلة عمل بالكامل باللغة الإنجليزية، الفضل يعود لأسلوب التدريس الراقي والمتابعة المستمرة.</p>
+        <div class="testi-person">
+          <div class="testi-avatar">س.ع</div>
+          <div><b>سارة العتيبي</b><span>مستوى متقدم</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">المنهج منظم بشكل احترافي جدًا، وكل درس يبني على ما قبله. شعرت بتقدمي أسبوعًا بعد أسبوع بشكل ملموس.</p>
+        <div class="testi-person">
+          <div class="testi-avatar">م.ح</div>
+          <div><b>محمد الحربي</b><span>مستوى متوسط</span></div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <p class="testi-quote">جلسات المحادثة المباشرة غيّرت طريقة تفكيري باللغة تمامًا. الآن أتحدث بثقة دون أن أترجم في ذهني أولًا.</p>
+        <div class="testi-person">
+          <div class="testi-avatar">ن.ف</div>
+          <div><b>نورة الفهد</b><span>مستوى متقدم</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section id="contact">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <h2>ابدأ رحلتك مع koby English اليوم</h2>
+      <p>اشترك الآن واحصل على أول درس تجريبي مجانًا، ولا تحتاج بطاقة ائتمان.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-gold">ابدأ درسك المجاني</a>
+        <a href="#" class="btn btn-ghost">تحدث مع مستشار تعليمي</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== Footer ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#top" class="brand">
+          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" style="width:36px;height:36px">
+            <path d="M6 10c6-3 12-3 18 0v26c-6-3-12-3-18 0V10Z" fill="url(#silverGrad)" opacity="0.92"/>
+            <path d="M42 10c-6-3-12-3-18 0v26c6-3 12-3 18 0V10Z" fill="#0A1A3F" stroke="url(#silverGrad)" stroke-width="1"/>
+          </svg>
+          <span class="brand-name">koby <b>English</b></span>
+        </a>
+        <p>منصة koby English تصنع جيلًا يتحدث الإنجليزية بثقة واحترافية، عبر تجربة تعليمية فاخرة ومصمَّمة بعناية.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 5.8c-.8.35-1.6.6-2.5.7.9-.55 1.6-1.4 1.9-2.4-.85.5-1.8.85-2.8 1.05A4.3 4.3 0 0 0 11.2 9c-3.5-.2-6.7-1.9-8.8-4.5-.4.6-.6 1.3-.6 2.05 0 1.4.7 2.65 1.8 3.4-.65 0-1.3-.2-1.85-.5v.05c0 2 1.4 3.6 3.3 4-.35.1-.7.15-1.05.15-.25 0-.5 0-.75-.07.5 1.6 2 2.75 3.75 2.8A8.6 8.6 0 0 1 2 18.5 12.2 12.2 0 0 0 8.6 20.4c7.9 0 12.2-6.5 12.2-12.2v-.55c.85-.6 1.55-1.35 2.2-2.2Z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 6 3-6 3V9Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#top">الرئيسية</a></li>
+          <li><a href="#features">لماذا نحن</a></li>
+          <li><a href="#courses">الدورات</a></li>
+          <li><a href="#testimonials">آراء الطلاب</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>الدورات</h4>
+        <ul>
+          <li><a href="#courses">مستوى مبتدئ</a></li>
+          <li><a href="#courses">مستوى متوسط</a></li>
+          <li><a href="#courses">مستوى متقدم</a></li>
+          <li><a href="#courses">إنجليزية الأعمال</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul>
+          <li><a href="mailto:hello@kobyenglish.com">hello@kobyenglish.com</a></li>
+          <li><a href="#">الأسئلة الشائعة</a></li>
+          <li><a href="#">الدعم الفني</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 koby English. جميع الحقوق محفوظة.</span>
+      <span>صُنع بشغف من أجل متعلمي اللغة الإنجليزية</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Header scroll state ---- */
+  var header = document.getElementById('siteHeader');
+  function onScroll(){
+    if(window.scrollY > 30){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---- Mobile menu ---- */
+  var toggle = document.getElementById('menuToggle');
+  var navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+  });
+
+  /* ---- Reveal on scroll ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- Starfield ---- */
+  var sky = document.getElementById('sky');
+  var STAR_COUNT = window.innerWidth < 720 ? 55 : 110;
+  var stars = [];
+  for(var i=0;i<STAR_COUNT;i++){
+    var s = document.createElement('div');
+    s.className = 'star';
+    var size = (Math.random()*2 + 0.6).toFixed(2);
+    var top = Math.random()*100;
+    var left = Math.random()*100;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.top = top + '%';
+    s.style.left = left + '%';
+    s.style.animationDuration = (2 + Math.random()*4).toFixed(2) + 's';
+    s.style.animationDelay = (Math.random()*4).toFixed(2) + 's';
+    s.dataset.depth = (0.3 + Math.random()*0.9).toFixed(2);
+    sky.appendChild(s);
+    stars.push(s);
+  }
+
+  /* ---- Meteors (shooting stars) ---- */
+  function spawnMeteor(){
+    var m = document.createElement('div');
+    m.className = 'meteor';
+    var len = 90 + Math.random()*70;
+    m.style.width = len + 'px';
+    m.style.top = (Math.random()*40) + '%';
+    m.style.left = (55 + Math.random()*35) + '%';
+    m.style.animation = 'shoot ' + (1.1 + Math.random()*0.6) + 's linear forwards';
+    sky.appendChild(m);
+    setTimeout(function(){ m.remove(); }, 2000);
+  }
+  if(!reduceMotion){
+    setInterval(function(){
+      if(Math.random() < 0.7) spawnMeteor();
+    }, 2600);
+  }
+
+  /* ---- Parallax (mouse + scroll) ---- */
+  if(!reduceMotion){
+    var px = 0, py = 0, scrollY = 0;
+    document.addEventListener('mousemove', function(e){
+      px = (e.clientX / window.innerWidth - 0.5);
+      py = (e.clientY / window.innerHeight - 0.5);
+    }, {passive:true});
+    document.addEventListener('scroll', function(){
+      scrollY = window.scrollY;
+    }, {passive:true});
+
+    function raf(){
+      stars.forEach(function(s){
+        var depth = parseFloat(s.dataset.depth);
+        var tx = px * depth * 18;
+        var ty = py * depth * 18 + scrollY * depth * 0.04;
+        s.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
+      });
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+})();
+</script>
+</body>
+</html>
